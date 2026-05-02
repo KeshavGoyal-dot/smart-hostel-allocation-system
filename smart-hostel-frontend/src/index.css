@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
+
+/* Reset */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  background: #F4F6F9;
+  color: #1A2332;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Spinner animation */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Focus ring for all inputs */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #1D9E75 !important;
+  box-shadow: 0 0 0 3px rgba(29, 158, 117, 0.12);
+}
+
+/* Buttons inherit font */
+button {
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* Thin scrollbar */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: #F4F6F9; }
+::-webkit-scrollbar-thumb { background: #D1D5DB; border-radius: 4px; }
+
+/* Remove default list styles */
+ul, ol { margin: 0; padding: 0; list-style: none; }
+
+/* Prevent text overflow in table cells */
+td { max-width: 240px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+th { white-space: nowrap; }
