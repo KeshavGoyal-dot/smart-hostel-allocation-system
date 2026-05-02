@@ -1,7 +1,7 @@
 // src/routes/waitlist.js
 const router = require("express").Router();
-const db = require("../config/db");
-const { authenticate, authorizeRoles } = require("../middleware/auth");
+const db = require("./db");
+const { authenticate, authorizeRoles } = require("./authmiddleware");
 
 // ── GET full waiting list (priority order) ────────────────────
 router.get(

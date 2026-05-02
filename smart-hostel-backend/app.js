@@ -4,12 +4,12 @@ const morgan = require("morgan");
 const express = require("express");
 const cors = require("cors");
 
-const authRoutes = require("./routes/auth");
-const studentRoutes = require("./routes/students");
-const hostelRoutes = require("./routes/hostels");
-const allocationRoutes = require("./routes/allocations");
-const waitlistRoutes = require("./routes/waitlist");
-const reportRoutes = require("./routes/reports");
+const authRoutes = require("./auth");
+const studentRoutes = require("./students");
+const hostelRoutes = require("./hostels");
+const allocationRoutes = require("./allocations");
+const waitlistRoutes = require("./waitlist");
+const reportRoutes = require("./reports");
 
 const app = express();
 const PORT = process.env.PORT || 5000;

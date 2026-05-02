@@ -1,7 +1,7 @@
 // src/routes/hostels.js
 const router = require("express").Router();
-const db = require("../config/db");
-const { authenticate, authorizeRoles } = require("../middleware/auth");
+const db = require("./db");
+const { authenticate, authorizeRoles } = require("./authmiddleware");
 
 // ── GET all hostels with block & room summary ──────────────────
 router.get("/", authenticate, async (req, res) => {

@@ -1,8 +1,8 @@
 // src/routes/students.js
 const bcrypt = require("bcryptjs");
 const router = require("express").Router();
-const db = require("../config/db");
-const { authenticate, authorizeRoles } = require("../middleware/auth");
+const db = require("./db");
+const { authenticate, authorizeRoles } = require("./authmiddleware");
 const { body, validationResult } = require("express-validator");
 
 // ── GET all students ──────────────────────────────────────────

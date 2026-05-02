@@ -1,7 +1,7 @@
 // src/routes/reports.js
 const router = require("express").Router();
-const db = require("../config/db");
-const { authenticate, authorizeRoles } = require("../middleware/auth");
+const db = require("./db");
+const { authenticate, authorizeRoles } = require("./authmiddleware");
 
 // ── GET occupancy summary per hostel ──────────────────────────
 router.get(
