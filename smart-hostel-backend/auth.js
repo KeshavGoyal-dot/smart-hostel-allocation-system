@@ -33,7 +33,14 @@ router.post(
 
       const user = rows[0];
 
-      const match = await bcrypt.compare(password, user.Password);
+      if (!user || !user.PasswordHash) {
+        return res.status(500).json({
+          success: false,
+          message: "Password missing in DB",
+        });
+      }
+
+      const match = await bcrypt.compare(password, user.PasswordHash);
       if (!match)
         return res
           .status(401)
@@ -84,7 +91,14 @@ router.post(
 
       const student = rows[0];
 
-      const match = await bcrypt.compare(password, student.Password);
+      if (!student || !student.password) {
+        return res.status(500).json({
+          success: false,
+          message: "Password missing in DB",
+        });
+      }
+
+      const match = await bcrypt.compare(password, student.password);
       if (!match)
         return res
           .status(401)

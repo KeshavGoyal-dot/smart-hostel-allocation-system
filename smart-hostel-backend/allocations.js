@@ -109,22 +109,29 @@ router.post(
       await conn.beginTransaction(); //// Using transaction to ensure atomic allocation
 
       await conn.query("CALL sp_allocate_room(?, @result)", [studentID]);
-      const [[resultRow]] = await conn.query("SELECT @result AS result");
 
-      if (resultRow.result.startsWith("ERROR")) {
+      const [rows] = await conn.query("SELECT @result AS result");
+
+      if (!rows || rows.length === 0 || !rows[0].result) {
+        throw new Error("Procedure did not return result");
+      }
+
+      const result = rows[0].result;
+
+      if (result.startsWith("ERROR")) {
         await conn.rollback();
-        return res
-          .status(400)
-          .json({ success: false, message: resultRow.result });
+        return res.status(400).json({ success: false, message: result });
       }
 
       await conn.commit();
-      res.status(201).json({ success: true, message: resultRow.result });
+
+      res.status(201).json({ success: true, message: result });
     } catch (err) {
+      console.error("ALLOCATION ERROR:", err); // 👈 ADD THIS
       await conn.rollback();
       res
         .status(500)
-        .json({ success: false, message: "Internal server error" });
+        .json({ success: false, message: "Internal Server Error" });
     } finally {
       conn.release();
     }
